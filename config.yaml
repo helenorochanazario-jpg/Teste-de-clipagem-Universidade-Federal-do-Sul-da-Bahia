@@ -85,9 +85,9 @@ backfill:
 
 # Planilha do Google Sheets (registro estruturado) e pasta do Drive (PDFs)
 google:
-  spreadsheet_id: "SUBSTITUA_PELO_ID_DA_PLANILHA"
-  worksheet_name: "clipping"
-  drive_pdf_folder_id: "SUBSTITUA_PELO_ID_DA_PASTA_DRIVE"
+  spreadsheet_id: "15QSgcDCIBxuKxpntClOf7krO75hyCMZstR6yD92Sv30"
+  worksheet_name: "busca ampla"
+  drive_pdf_folder_id: "1mV5KDtZDF5LYu1ZzNe8LKmxKl3MzkP3l"
   service_account_json_env: "GOOGLE_SERVICE_ACCOUNT_JSON"  # nome da secret
 
 # Categorias empregadas no relatório (o classificador de sentimento roda
