@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>"UFSB" - Google Notícias</title>
+    <link>https://news.google.com/rss/search?q=UFSB</link>
+    <language>pt-BR</language>
+    <item>
+      <title>UFSB lança edital de pós-graduação em Economia do Mar - A Tarde</title>
+      <link>https://news.google.com/rss/articles/CBMiXXo0YQ?oc=5</link>
+      <guid isPermaLink="false">abc123</guid>
+      <pubDate>Fri, 18 Sep 2026 12:30:00 GMT</pubDate>
+      <source url="https://atarde.com.br">A Tarde</source>
+    </item>
+    <item>
+      <title>Reitoria da UFSB assina convênio com prefeitura de Itabuna - Correio</title>
+      <link>https://news.google.com/rss/articles/CBMiXXo0YW?oc=5</link>
+      <guid isPermaLink="false">def456</guid>
+      <pubDate>Thu, 17 Sep 2026 09:00:00 GMT</pubDate>
+      <source url="https://correio24horas.com.br">Correio</source>
+    </item>
+    <item>
+      <title>Sem fonte identificada no título nem na tag source</title>
+      <link>https://news.google.com/rss/articles/CBMiXXo0YX?oc=5</link>
+      <guid isPermaLink="false">ghi789</guid>
+      <pubDate>Wed, 16 Sep 2026 18:15:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

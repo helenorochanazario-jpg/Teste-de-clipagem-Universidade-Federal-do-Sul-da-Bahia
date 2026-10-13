@@ -1,0 +1,101 @@
+# =============================================================================
+# CONFIGURAÇÃO DO CLIPPING DIGITAL — UFSB / ACS
+# Edite as listas abaixo antes de rodar. Nada aqui é obrigatório manter como
+# está — são valores de partida coerentes com o perfil institucional da UFSB.
+# =============================================================================
+
+# Palavras-chave/termos de busca (cada um vira uma consulta separada).
+# Recomenda-se manter granular: o Google News RSS devolve no máximo ~100
+# resultados por consulta, então termos muito genéricos ("universidade")
+# afogam o sinal. Prefira nomes próprios e variações grafadas.
+keywords:
+  - "Universidade Federal do Sul da Bahia"
+  - "UFSB"
+  - "UFSB Porto Seguro"
+  - "UFSB Itabuna"
+  - "UFSB Ilhéus"
+  - "UFSB Teixeira de Freitas"
+
+# Idioma/região usados nas consultas (Google News RSS e GDELT)
+locale:
+  hl: "pt-BR"
+  gl: "BR"
+  ceid: "BR:pt-BR"
+
+# Veículos com scraper dedicado.
+#
+# bahia-noticias: CONFIRMADO por pesquisa — usa src/collector_bahianoticias.py,
+# que lê a página de tag real do site (ex. /tags/ufsb), com histórico
+# observado desde ~2020. Pronto para uso, com testes.
+#
+# correio e a-tarde: domínios e padrão de URL de matéria CONFIRMADOS por
+# pesquisa, mas NÃO encontrei (nem inventei) um endpoint de busca ou tag
+# funcional para eles — a pesquisa via texto extraído não mostra classes
+# CSS nem confirma se existe algo como /tag/ufsb nesses sites. Ver
+# README.md, seção "Veículos regionais — como fechar Correio e A Tarde",
+# para o passo simples que a própria equipe da ACS pode fazer (2 minutos
+# no navegador) para descobrir a URL certa e me passar para eu configurar.
+outlets:
+  - name: "bahia-noticias"
+    enabled: true
+    collector: "bahianoticias"   # usa src/collector_bahianoticias.py
+    tags: ["ufsb"]
+
+  - name: "correio"
+    enabled: false
+    dominio_confirmado: "correio24horas.com.br"
+    padrao_url_materia_confirmado: "/{secao}/{slug}-{MMAA}"
+    endpoint_busca_ou_tag: null   # ainda não confirmado — ver README
+    selectors:
+      result_item: "PLACEHOLDER — preencher após inspecionar o HTML real"
+      title: "PLACEHOLDER"
+      link: "PLACEHOLDER"
+      date: "PLACEHOLDER"
+
+  - name: "a-tarde"
+    enabled: false
+    dominio_confirmado: "atarde.com.br"
+    endpoint_busca_ou_tag: null   # ainda não confirmado — ver README
+    selectors:
+      result_item: "PLACEHOLDER — preencher após inspecionar o HTML real"
+      title: "PLACEHOLDER"
+      link: "PLACEHOLDER"
+      date: "PLACEHOLDER"
+
+# Janela de coleta "para frente" (monitoramento contínuo, a partir de hoje)
+monitoring:
+  since: "today"
+  frequency_cron: "0 8,14,20 * * *"   # 3x/dia — ajuste ao limite do GitHub Actions
+
+# Backfill histórico (retroativo). Ver README: não existe fonte gratuita com
+# indexação textual completa da imprensa brasileira desde 2013 — a cobertura
+# de 2013–2015 será necessariamente parcial ("melhor esforço").
+# Backfill histórico (retroativo). Ver README, seção "Plano B — backfill
+# 2013-2015": não existe fonte gratuita com indexação textual completa da
+# imprensa brasileira desde 2013 — a cobertura desse período é "melhor
+# esforço", combinando GDELT, Wayback Machine, Hemeroteca Digital da
+# Biblioteca Nacional (para o acervo impresso de veículos centenários como
+# A Tarde) e, possivelmente, o próprio arquivo interno da ACS/UFSB.
+backfill:
+  start_date: "2013-01-01"  # ano de criação da UFSB (Lei 12.818/2013)
+  # GDELT DOC 2.0 API cobre bem a partir de ~2015-2017 em diante.
+  gdelt_reliable_from: "2017-01-01"
+  use_wayback_machine: true
+  use_hemeroteca_digital_bn: true  # ver README — checar cobertura por veículo
+
+# Planilha do Google Sheets (registro estruturado) e pasta do Drive (PDFs)
+google:
+  spreadsheet_id: "SUBSTITUA_PELO_ID_DA_PLANILHA"
+  worksheet_name: "clipping"
+  drive_pdf_folder_id: "SUBSTITUA_PELO_ID_DA_PASTA_DRIVE"
+  service_account_json_env: "GOOGLE_SERVICE_ACCOUNT_JSON"  # nome da secret
+
+# Categorias empregadas no relatório (o classificador de sentimento roda
+# à parte; isso aqui é só o rótulo temático usado nos gráficos)
+categories:
+  - "Institucional"
+  - "Pesquisa e Extensão"
+  - "Ensino"
+  - "Economia do Mar"
+  - "Cultura e Sociedade"
+  - "Outros"

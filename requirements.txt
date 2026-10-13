@@ -1,0 +1,26 @@
+# Coleta
+feedparser==6.0.11
+requests==2.32.3
+beautifulsoup4==4.12.3
+
+# Config
+PyYAML==6.0.2
+python-dateutil==2.9.0
+
+# PDF (impressão fiel da página)
+playwright==1.47.0
+
+# Google Sheets + Drive
+gspread==6.1.2
+google-api-python-client==2.146.0
+google-auth==2.35.0
+
+# Sentimento (PT-BR)
+pysentimiento==0.7.5
+torch==2.4.1
+
+# Deduplicação por similaridade (opcional, ver README)
+rapidfuzz==3.9.7
+
+# Testes
+pytest==8.3.3
