@@ -16,8 +16,10 @@ google-api-python-client==2.146.0
 google-auth==2.35.0
 
 # Sentimento (PT-BR)
-pysentimiento==0.7.5
+pysentimiento==0.7.3
 torch==2.4.1
+transformers==4.57.6
+datasets==5.0.1
 
 # Deduplicação por similaridade (opcional, ver README)
 rapidfuzz==3.9.7
